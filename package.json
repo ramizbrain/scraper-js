@@ -6,10 +6,13 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "cheerio": "^1.0.0",
     "elysia": "latest",
-    "playwright": "^1.52.0"
+    "playwright": "^1.52.0",
+    "turndown": "^7.2.0"
   },
   "devDependencies": {
+    "@types/turndown": "^5.0.5",
     "bun-types": "latest"
   },
   "module": "src/index.js"
