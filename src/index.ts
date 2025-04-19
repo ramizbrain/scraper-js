@@ -1,15 +1,15 @@
 import { Elysia } from "elysia";
 import scrapeRoute from "./routes/scrape";
-import healthRoute from "./routes/health";
+
 import { BrowserPool } from "./browser-pool/pool-manager";
 
 const pool = new BrowserPool();
 
+const api = new Elysia({ prefix: "/api" }).use(scrapeRoute(pool));
+
 const app = new Elysia()
-  .use(scrapeRoute(pool))
-  .use(healthRoute())
+  .use(api)
   .get("/", () => "Hello Elysia")
-  .get("/api/scrape/metrics", () => pool.getMetrics())
   .listen(8000);
 
 console.log(
